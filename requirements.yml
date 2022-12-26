@@ -1,0 +1,8 @@
+---
+# Required roles and collections
+roles:
+  - name: thbe.common
+  - name: thbe.rhel
+
+collections:
+  - name: ansible.posix

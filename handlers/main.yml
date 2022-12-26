@@ -1,0 +1,13 @@
+---
+# handlers file for security
+- name: Restart sshd
+  ansible.builtin.service:
+    name: sshd
+    state: restarted
+  when:
+    - ansible_facts['virtualization_type'] != "docker"
+
+- name: Reload firewalld
+  ansible.builtin.command: firewall-cmd --reload
+  when:
+    - ansible_facts['virtualization_type'] != "docker"

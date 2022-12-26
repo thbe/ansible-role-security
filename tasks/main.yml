@@ -1,0 +1,27 @@
+---
+- name: Create security folder structure
+  ansible.builtin.import_tasks: folder.yml
+
+- name: Deploy selinux configuration
+  ansible.builtin.import_tasks: selinux.yml
+
+- name: Deploy PAM configuration
+  ansible.builtin.import_tasks: pam.yml
+
+- name: Deploy local firewall
+  ansible.builtin.import_tasks: firewalld.yml
+
+- name: Deploy sshd configuration
+  ansible.builtin.import_tasks: sshd.yml
+
+- name: Deploy the Security Content Automation Protocol
+  ansible.builtin.import_tasks: openscap.yml
+
+- name: Deploy Advanced Intrusion Detection Environment
+  ansible.builtin.import_tasks: aide.yml
+
+- name: Deploy Lynis security tool
+  ansible.builtin.import_tasks: lynis.yml
+
+- name: Deploy rkhunter security tool
+  ansible.builtin.import_tasks: rkhunter.yml

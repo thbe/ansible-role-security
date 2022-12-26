@@ -1,0 +1,23 @@
+---
+dependencies:
+  - role: thbe.common
+  - role: thbe.rhel
+
+galaxy_info:
+  role_name: security
+  namespace: thbe
+  author: Thomas Bendler
+  description: This role configures and deploys security specific settings/ tools on an RHEL instance or RHEL clone
+  license: GPL-3.0-only
+  min_ansible_version: "2.9"
+  platforms:
+    - name: EL
+      versions:
+        - "8"
+        - "9"
+  galaxy_tags:
+    - security
+    - tools
+    - rhel
+    - rockylinux
+    - centos

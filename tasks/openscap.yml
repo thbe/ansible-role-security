@@ -1,0 +1,11 @@
+---
+- name: Install OpenSCAP packages
+  ansible.builtin.dnf:
+    name:
+      - openscap-scanner
+      - scap-security-guide
+      - scap-security-guide-doc
+    state: present
+  when:
+    - ansible_facts['os_family'] == "RedHat"
+    - ansible_facts['distribution_major_version']|int >= 8

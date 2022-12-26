@@ -1,0 +1,61 @@
+# Ansible Role thbe-security
+
+[![Ansible Lint](https://github.com/thbe/ansible-role-security/actions/workflows/ansible-lint.yml/badge.svg)](https://github.com/thbe/ansible-role-security/actions/workflows/ansible-lint.yml)[![Molecule](https://github.com/thbe/ansible-role-security/actions/workflows/molecule.yml/badge.svg)](https://github.com/thbe/ansible-role-security/actions/workflows/molecule.yml)
+
+This role configures and deploys security settings and tools on an RHEL instance or RHEL clone.
+
+## Requirements
+
+This role does not have any requirements.
+
+## Role Variables
+
+* **role_directory** - This variable contains the root path of the directories used by thbe roles (**do not change!**)
+* **password_quality_file** - This variable contains the password quality file (**do not change!**)
+* **password_login_file** - This variable contains the login file (**do not change!**)
+* **minlen** (default: 16)
+* **lcredit** (default: -1)
+* **ucredit** (default: -1)
+* **dcredit** (default: -1)
+* **ocredit** (default: -1)
+* **pass_max_days** - Maximum days before password change is required (default: 365)
+* **pass_min_days** - Minimum days before password could be changed (default: 0)
+* **pass_min_len** - Minimum password length (default: 8)
+* **pass_warn_age** - Days before warning that password will expire (default: 7)
+* **remember** - Number of passwords to remember (default: 24)
+
+## Dependencies
+
+This role depends on the "thbe.common" and "thbe.baseline" role from Ansible Galaxy.
+
+## Example Playbook
+
+This role can be included in the site.yml like this:
+
+```yaml
+# Site playbook
+- name: Ansible playbooks for all nodes
+  hosts: all
+  collections:
+    - ansible.posix
+    - community.general
+  gather_facts: true
+  tasks:
+    - name: Role Common
+      ansible.builtin.include_role:
+        name: thbe.common
+    - name: Role Baseline
+      ansible.builtin.include_role:
+        name: thbe.baseline
+    - name: Role Security
+      ansible.builtin.include_role:
+        name: thbe.security
+```
+
+## License
+
+GPL-3.0-only
+
+## Author Information
+
+Thomas Bendler - [https://www.thbe.org/](https://www.thbe.org/)

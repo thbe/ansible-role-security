@@ -1,0 +1,21 @@
+---
+- name: Install Advanced Intrusion Detection Environment (AIDE)
+  ansible.builtin.dnf:
+    name:
+      - aide
+    state: present
+
+- name: Create the AIDE database if not exists
+  ansible.builtin.command:
+    cmd: /usr/sbin/aide --init
+    creates: /var/lib/aide/aide.db.new.gz
+
+- name: Activate AIDE database
+  ansible.builtin.copy:
+    force: false
+    remote_src: true
+    src: /var/lib/aide/aide.db.new.gz
+    dest: /var/lib/aide/aide.db.gz
+    owner: root
+    group: root
+    mode: 0644

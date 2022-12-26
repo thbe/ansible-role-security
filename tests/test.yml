@@ -1,0 +1,8 @@
+---
+- name: Local role test
+  hosts: localhost
+  remote_user: root
+  roles:
+    - thbe.common
+    - thbe.baseline
+    - thbe.security

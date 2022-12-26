@@ -1,0 +1,21 @@
+---
+- name: Installation of openssh-server
+  ansible.builtin.dnf:
+    name:
+      - openssh-server
+    state: present
+
+- name: Enable and start openssh-server
+  ansible.builtin.service:
+    name: sshd.service
+    state: started
+    enabled: true
+  when:
+    - ansible_facts['virtualization_type'] != "docker"
+
+- name: Disable root login through SSH
+  ansible.builtin.lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: '^PermitRootLogin'
+    line: PermitRootLogin no
+  notify: Restart sshd

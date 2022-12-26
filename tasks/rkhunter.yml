@@ -1,0 +1,11 @@
+---
+- name: Installation of rkhunter for RHEL major release 8 and above
+  ansible.builtin.dnf:
+    name:
+      - rkhunter
+    state: present
+
+- name: Create the rkhunter database if not exists
+  ansible.builtin.command:
+    cmd: /usr/bin/rkhunter --propupdate
+    creates: /var/lib/rkhunter/db/rkhunter.dat

@@ -1,0 +1,23 @@
+---
+# defaults file for security
+role_directory: /opt/ansible/security
+
+# Files for password_policy
+password_quality_file: /etc/security/pwquality.conf
+password_login_file: /etc/login.defs
+
+# Password complexity
+minlen: 16
+lcredit: -1
+ucredit: -1
+dcredit: -1
+ocredit: -1
+
+# Password expiration
+pass_max_days: 365
+pass_min_days: 0
+pass_min_len: 8
+pass_warn_age: 7
+
+# Password history
+remember: 24

@@ -1,0 +1,57 @@
+---
+- name: Deploy faillock configuration for PAM
+  ansible.builtin.copy:
+    src: security/faillock.conf
+    dest: /etc/security/faillock.conf
+    owner: root
+    group: root
+    mode: 0644
+  when:
+    - ansible_facts['os_family'] == "RedHat"
+    - ansible_facts['distribution_major_version']|int == 8
+
+- name: Enforce password complexity
+  ansible.builtin.lineinfile:
+    state: present
+    dest: "{{ password_quality_file }}"
+    regexp: "^{{ item.search }}"
+    line: "{{ item.replace }}"
+    backup: true
+  with_items:
+    - {search: "minlen", replace: "minlen = {{ minlen }}"}
+    - {search: "lcredit", replace: "lcredit = {{ lcredit }}"}
+    - {search: "ucredit", replace: "ucredit = {{ ucredit }}"}
+    - {search: "dcredit", replace: "dcredit = {{ dcredit }}"}
+    - {search: "ocredit", replace: "ocredit = {{ ocredit }}"}
+  when:
+    - ansible_facts['os_family'] == "RedHat"
+    - ansible_facts['distribution_major_version']|int == 8
+
+- name: Enforce password expiration
+  ansible.builtin.lineinfile:
+    state: present
+    dest: "{{ password_login_file }}"
+    regexp: "^{{ item.search }}"
+    line: "{{ item.replace }}"
+    backup: true
+  with_items:
+    - {search: "PASS_MAX_DAYS", replace: "PASS_MAX_DAYS {{ pass_max_days }}"}
+    - {search: "PASS_MIN_DAYS", replace: "PASS_MIN_DAYS {{ pass_min_days }}"}
+    - {search: "PASS_MIN_LEN", replace: "PASS_MIN_LEN {{ pass_min_len }}"}
+    - {search: "PASS_WARN_AGE", replace: "PASS_WARN_AGE {{ pass_warn_age }}"}
+  when:
+    - ansible_facts['os_family'] == "RedHat"
+    - ansible_facts['distribution_major_version']|int == 8
+
+- name: Enforce password history
+  community.general.pamd:
+    name: "system-auth"
+    type: password
+    control: sufficient
+    module_path: pam_unix.so
+    module_arguments:
+      - "remember={{ remember }}"
+    state: args_present
+  when:
+    - ansible_facts['os_family'] == "RedHat"
+    - ansible_facts['distribution_major_version']|int == 8
