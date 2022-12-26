@@ -2,6 +2,7 @@
 dependencies:
   - role: thbe.common
   - role: thbe.rhel
+  - role: thbe.baseline
 
 galaxy_info:
   role_name: security

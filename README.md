@@ -26,14 +26,17 @@ This role does not have any requirements.
 
 ## Dependencies
 
-This role depends on the "thbe.common" and "thbe.baseline" role from Ansible Galaxy.
+This role depends on:
+
+* thbe.common
+* thbe.rhel
+* thbe.baseline
 
 ## Example Playbook
 
 This role can be included in the site.yml like this:
 
 ```yaml
-# Site playbook
 - name: Ansible playbooks for all nodes
   hosts: all
   collections:
@@ -44,6 +47,9 @@ This role can be included in the site.yml like this:
     - name: Role Common
       ansible.builtin.include_role:
         name: thbe.common
+    - name: Role rhel
+      ansible.builtin.include_role:
+        name: thbe.rhel
     - name: Role Baseline
       ansible.builtin.include_role:
         name: thbe.baseline

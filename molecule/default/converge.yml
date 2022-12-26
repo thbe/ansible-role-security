@@ -10,6 +10,9 @@
     - name: "Include thbe.rhel"
       ansible.builtin.include_role:
         name: "thbe.rhel"
+    - name: "Include thbe.baseline"
+      ansible.builtin.include_role:
+        name: "thbe.baseline"
     - name: "Include thbe.security"
       ansible.builtin.include_role:
         name: "thbe.security"
