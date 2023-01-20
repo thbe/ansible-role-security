@@ -3,7 +3,6 @@
 roles:
   - name: thbe.common
   - name: thbe.rhel
-  - name: thbe.baseline
 
 collections:
   - name: ansible.posix
