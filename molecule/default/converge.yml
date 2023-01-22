@@ -10,6 +10,8 @@
     - name: "Include thbe.rhel"
       ansible.builtin.include_role:
         name: "thbe.rhel"
+      vars:
+        external_repos_epel: true
     - name: "Include thbe.security"
       ansible.builtin.include_role:
         name: "thbe.security"
