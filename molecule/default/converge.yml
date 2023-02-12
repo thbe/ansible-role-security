@@ -1,8 +1,6 @@
 ---
 - name: Converge
   hosts: all
-  collections:
-    - ansible.posix
   tasks:
     - name: "Include thbe.common"
       ansible.builtin.include_role:
