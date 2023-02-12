@@ -30,7 +30,6 @@ This role depends on:
 
 * thbe.common
 * thbe.rhel
-* thbe.baseline
 
 ## Example Playbook
 
@@ -50,9 +49,6 @@ This role can be included in the site.yml like this:
     - name: Role rhel
       ansible.builtin.include_role:
         name: thbe.rhel
-    - name: Role Baseline
-      ansible.builtin.include_role:
-        name: thbe.baseline
     - name: Role Security
       ansible.builtin.include_role:
         name: thbe.security
