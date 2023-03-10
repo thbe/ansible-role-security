@@ -1,6 +1,6 @@
 # Ansible Role thbe-security
 
-[![Ansible Lint](https://github.com/thbe/ansible-role-security/actions/workflows/ansible-lint.yml/badge.svg)](https://github.com/thbe/ansible-role-security/actions/workflows/ansible-lint.yml)[![Molecule](https://github.com/thbe/ansible-role-security/actions/workflows/molecule.yml/badge.svg)](https://github.com/thbe/ansible-role-security/actions/workflows/molecule.yml)
+[![Molecule](https://github.com/thbe/ansible-role-security/actions/workflows/molecule.yml/badge.svg)](https://github.com/thbe/ansible-role-security/actions/workflows/molecule.yml)
 
 This role configures and deploys security settings and tools on an RHEL instance or RHEL clone.
 
@@ -23,8 +23,8 @@ This role does not have any requirements.
 * **pass_min_len** - Minimum password length (default: 8)
 * **pass_warn_age** - Days before warning that password will expire (default: 7)
 * **remember** - Number of passwords to remember (default: 24)
-* **lynis_enable** - Enable the installation of Lynis (default: false)
-* **rkhunter_enable** - Enable the installation of rkhunter (default: false)
+* **lynis_enable** - Enable the installation of Lynis (default: false; requires EPEL)
+* **rkhunter_enable** - Enable the installation of rkhunter (default: false; requires EPEL)
 
 ## Dependencies
 
@@ -44,6 +44,11 @@ This role can be included in the site.yml like this:
     - ansible.posix
     - community.general
   gather_facts: true
+  vars:
+        external_repos_epel: true
+        lynis_enable: true
+        rkhunter_enable: true
+
   tasks:
     - name: Role Common
       ansible.builtin.include_role:

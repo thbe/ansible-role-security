@@ -5,6 +5,7 @@
         "cgroupns",
         "dcredit",
         "dhcpv",
+        "EPEL",
         "faillock",
         "firewalld",
         "github",

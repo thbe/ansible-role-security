@@ -15,3 +15,5 @@
         name: "thbe.security"
       vars:
         remember: 16
+        lynis_enable: true
+        rkhunter_enable: true
