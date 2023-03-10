@@ -21,3 +21,6 @@ pass_warn_age: 7
 
 # Password history
 remember: 24
+
+# Enable lynis
+lynis_enable: false

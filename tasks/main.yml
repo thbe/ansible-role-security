@@ -22,6 +22,8 @@
 
 - name: Deploy Lynis security tool
   ansible.builtin.import_tasks: lynis.yml
+  when:
+    - lynis_enable|bool
 
 - name: Deploy rkhunter security tool
   ansible.builtin.import_tasks: rkhunter.yml

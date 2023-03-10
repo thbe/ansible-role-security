@@ -23,6 +23,7 @@ This role does not have any requirements.
 * **pass_min_len** - Minimum password length (default: 8)
 * **pass_warn_age** - Days before warning that password will expire (default: 7)
 * **remember** - Number of passwords to remember (default: 24)
+* **lynis_enable** - Enable the installation of Lynis (default: false)
 
 ## Dependencies
 
