@@ -27,3 +27,5 @@
 
 - name: Deploy rkhunter security tool
   ansible.builtin.import_tasks: rkhunter.yml
+  when:
+    - rkhunter_enable|bool

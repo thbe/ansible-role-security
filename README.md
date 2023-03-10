@@ -24,6 +24,7 @@ This role does not have any requirements.
 * **pass_warn_age** - Days before warning that password will expire (default: 7)
 * **remember** - Number of passwords to remember (default: 24)
 * **lynis_enable** - Enable the installation of Lynis (default: false)
+* **rkhunter_enable** - Enable the installation of rkhunter (default: false)
 
 ## Dependencies
 

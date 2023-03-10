@@ -19,5 +19,5 @@ verifier:
   name: ansible
 lint: |
   set -e
-  yamllint .
-  ansible-lint .
+  yamllint --list-files .
+  ansible-lint -v --force-color .

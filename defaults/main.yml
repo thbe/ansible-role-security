@@ -24,3 +24,6 @@ remember: 24
 
 # Enable lynis
 lynis_enable: false
+
+# Enable rkhunter
+rkhunter_enable: false
