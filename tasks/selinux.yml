@@ -3,13 +3,9 @@
   ansible.posix.selinux:
     policy: targeted
     state: permissive
-  when:
-    - ansible_facts['virtualization_type'] != "docker"
 
 - name: Permanently set SELinux into permissive mode
   ansible.builtin.lineinfile:
     path: /etc/selinux/config
     regexp: '^SELINUX='
     line: SELINUX=permissive
-  when:
-    - ansible_facts['virtualization_type'] != "docker"

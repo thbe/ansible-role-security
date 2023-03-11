@@ -20,4 +20,4 @@ galaxy_info:
     - tools
     - rhel
     - rockylinux
-    - centos
+    - almalinux
