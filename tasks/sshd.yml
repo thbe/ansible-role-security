@@ -10,9 +10,6 @@
     name: sshd.service
     state: started
     enabled: true
-  when:
-    - (ansible_facts['virtualization_type'] != "container") and
-      (ansible_facts['virtualization_type'] != "docker")
 
 - name: Disable root login through SSH
   ansible.builtin.lineinfile:

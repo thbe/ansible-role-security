@@ -22,17 +22,13 @@
 
 - name: Deploy Advanced Intrusion Detection Environment
   ansible.builtin.import_tasks: aide.yml
-  when:
-    - ansible_facts['virtualization_type'] != "container"
 
 - name: Deploy Lynis security tool
   ansible.builtin.import_tasks: lynis.yml
   when:
-    - ansible_facts['virtualization_type'] != "container"
     - lynis_enable|bool
 
 - name: Deploy rkhunter security tool
   ansible.builtin.import_tasks: rkhunter.yml
   when:
-    - ansible_facts['virtualization_type'] != "container"
     - rkhunter_enable|bool

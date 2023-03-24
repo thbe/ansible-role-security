@@ -4,17 +4,12 @@
     name:
       - firewalld
     state: present
-  when:
-    - ansible_facts['virtualization_type'] != "container"
 
 - name: Enable and start firewalld
   ansible.builtin.service:
     name: firewalld.service
     state: started
     enabled: true
-  when:
-    - (ansible_facts['virtualization_type'] != "container") and
-      (ansible_facts['virtualization_type'] != "docker")
 
 - name: Enable standard service ssh on local firewall
   ansible.posix.firewalld:
@@ -22,9 +17,6 @@
     permanent: true
     state: enabled
   notify: Reload firewalld
-  when:
-    - (ansible_facts['virtualization_type'] != "container") and
-      (ansible_facts['virtualization_type'] != "docker")
 
 - name: Enable standard service dhcpv6-client on local firewall
   ansible.posix.firewalld:
@@ -32,9 +24,6 @@
     permanent: true
     state: enabled
   notify: Reload firewalld
-  when:
-    - (ansible_facts['virtualization_type'] != "container") and
-      (ansible_facts['virtualization_type'] != "docker")
 
 - name: Enable standard service samba-client on local firewall
   ansible.posix.firewalld:
@@ -42,9 +31,6 @@
     permanent: true
     state: enabled
   notify: Reload firewalld
-  when:
-    - (ansible_facts['virtualization_type'] != "container") and
-      (ansible_facts['virtualization_type'] != "docker")
 
 - name: Activate firewalld logging
   ansible.builtin.lineinfile:

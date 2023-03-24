@@ -15,6 +15,5 @@
       - scap-security-guide-doc
     state: present
   when:
-    - ansible_facts['virtualization_type'] != "container"
     - ansible_facts['os_family'] == "RedHat"
     - ansible_facts['distribution_major_version']|int >= 8
