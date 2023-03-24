@@ -4,6 +4,7 @@
         "Bendler",
         "centos",
         "cgroupns",
+        "containerd",
         "dcredit",
         "dhcpv",
         "EPEL",
