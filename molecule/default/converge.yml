@@ -14,6 +14,10 @@
       ansible.builtin.include_role:
         name: "thbe.security"
       vars:
-        remember: 16
+        pass_max_days: 180
+        pass_min_days: 10
+        pass_min_len: 10
+        pass_warn_age: 14
+        remember: 12
         lynis_enable: true
         rkhunter_enable: true
