@@ -1,6 +1,12 @@
 ---
 - name: Converge
   hosts: all
+  vars:
+    external_repos_epel: true
+    # Cockpit optional packages are absent from the minimal test container.
+    # Set at play level so it also applies to thbe.rhel when it is pulled in
+    # as a meta dependency of thbe.security (not just the explicit include).
+    cockpit_manage: false
   tasks:
     - name: "Include thbe.common"
       ansible.builtin.include_role:
@@ -8,10 +14,6 @@
     - name: "Include thbe.rhel"
       ansible.builtin.include_role:
         name: "thbe.rhel"
-      vars:
-        external_repos_epel: true
-        # Cockpit optional packages are absent from the minimal test container
-        cockpit_manage: false
     - name: "Include thbe.security"
       ansible.builtin.include_role:
         name: "thbe.security"
